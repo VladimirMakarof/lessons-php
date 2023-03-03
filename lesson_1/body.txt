@@ -1,0 +1,4 @@
+Логин: qwerty, email: qwe@mail.ru, возраст: 19Текст вне тегов phpЛогин: qwerty
+<h2>Логин: qwerty</h2>
+<p>email: qwe@mail.ru</p>
+<p>Возраст: 19</p>
