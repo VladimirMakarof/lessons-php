@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333333;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+section {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas: "info img img" "images images images" "buy buy buy";
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.info {
+    grid-area: info;
+    padding: 1.5rem;
+    box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+}
+
+.img {
+    grid-area: img;
+}
+
+.buy {
+    grid-area: buy;
+}
+
+.images {
+    grid-area: images;
+    /*height: 30vh;*/
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.images img {
+    height: 100%;
+    width: 100%;
+}
+.buy {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.buy a {
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: #333333;
+    font-size: 2rem;
+    background: orangered;
+}
