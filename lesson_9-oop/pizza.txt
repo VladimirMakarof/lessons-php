@@ -1,0 +1,108 @@
+Калькулятор заказа пиццы:
+Заказ может состоять из нескольких пицц.
+У каждого заказа есть номер и дата.
+У каждого заказа должна быть возможность узнать стоимость.
+Стоимость заказа складывается из стоимости всех пицц.
+Каждая пицца состоит из основы, стоимостью 100 и ингредиентов.
+У каждой пиццы есть название.
+У каждого ингредиента есть название, количество и стоимость за 1 единицу.
+
+Ингредиент
+    название
+    количество
+    стоимость
+    метод, который возвращает (количество * стоимость)
+Пицца
+    название
+    основа = 100
+    ингредиенты = [ин1, ин2]
+    метод добавления ингредиента в массив 'ингредиенты'
+    public function addIng($ing) { добавление $ing в массив }
+    метод, который возвращает стоимость пиццы
+Заказ
+    номер
+    дата
+    пиццы = [п1, п2]
+    метод добавления пиццы в массив 'пиццы'
+    метод, который возвращает стоимость заказа
+
+
+
+
+<?php
+class Ingredient {
+    private $name;
+    private $quantity;
+    private $price;
+
+    public function __construct($name, $quantity, $price) {
+        $this->name = $name;
+        $this->quantity = $quantity;
+        $this->price = $price;
+    }
+
+    public function getPrice() {
+        return $this->quantity * $this->price;
+    }
+}
+
+class Pizza {
+    private $name;
+    private $base = 100;
+    private $ingredients = [];
+
+    public function __construct($name) {
+        $this->name = $name;
+    }
+
+    public function addIngredient(Ingredient $ingredient) {
+        $this->ingredients[] = $ingredient;
+    }
+
+    public function getPrice() {
+        $price = $this->base;
+        foreach ($this->ingredients as $ingredient) {
+            $price += $ingredient->getPrice();
+        }
+        return $price;
+    }
+}
+
+class Order {
+    private $number;
+    private $date;
+    private $pizzas = [];
+
+    public function __construct($number, $date) {
+        $this->number = $number;
+        $this->date = $date;
+    }
+
+    public function addPizza(Pizza $pizza) {
+        $this->pizzas[] = $pizza;
+    }
+
+    public function getPrice() {
+        $price = 0;
+        foreach ($this->pizzas as $pizza) {
+            $price += $pizza->getPrice();
+        }
+        return $price;
+    }
+}
+
+// Пример использования классов
+$ing1 = new Ingredient('Моцарелла', 2, 50);
+$ing2 = new Ingredient('Томаты', 3, 20);
+$pizza1 = new Pizza('Маргарита');
+$pizza1->addIngredient($ing1);
+$pizza1->addIngredient($ing2);
+$ing3 = new Ingredient('Сыр дор-блю', 1, 100);
+$pizza2 = new Pizza('Четыре сыра');
+$pizza2->addIngredient($ing1);
+$pizza2->addIngredient($ing2);
+$pizza2->addIngredient($ing3);
+$order = new Order(1, '2023-03-21');
+$order->addPizza($pizza1);
+$order->addPizza($pizza2);
+echo 'Стоимость заказа: ' . $order->getPrice() . ' руб.';
