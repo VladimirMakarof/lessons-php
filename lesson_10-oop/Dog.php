@@ -1,14 +1,16 @@
 <?php
 // класс, реализующий интерфейс обязан реализовать
 // все его абстрактные методы
-class Dog extends Animal implements LearnAble {
+class Dog extends Animal implements LearnAble
+{ // implements добавление интерфейса с абстрактными методами learn()
 
     public function learn()
     {
         echo 'собака занимается с хозяином';
     }
 
-    public function run(){
+    public function run()
+    {
         echo 'реализация в классе Dog';
     }
 }
