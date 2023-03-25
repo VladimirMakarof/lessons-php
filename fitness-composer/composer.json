@@ -1,0 +1,17 @@
+{
+  "name": "vladimir/fitness",
+  "type": "project",
+  "authors": [
+    {
+      "name": "VladimirMakarof",
+      "email": "stan13.09@mail.ru"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "vladimir\\fitness\\": "src/"
+    }
+  }
+}
